@@ -117,6 +117,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                 onChange={(e) => handleImage(e, field.onChange)} 
                             />
                         </FormControl> 
+                        <FormMessage />
                     </FormItem>
                 )}
             />
@@ -125,7 +126,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     <FormLabel className="text-base-semibold text-light-2">Name</FormLabel>
                     <FormControl>
                         <Input {...field} type='text' className="account-form_input no-focus" />
-                    </FormControl> 
+                    </FormControl>
+                    <FormMessage /> 
                 </FormItem>
             )}
         />
@@ -134,7 +136,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     <FormLabel className="text-base-semibold text-light-2">Username</FormLabel>
                     <FormControl>
                         <Input {...field} type='text' className="account-form_input no-focus" />
-                    </FormControl> 
+                    </FormControl>
+                    <FormMessage /> 
                 </FormItem>
             )}
         />
@@ -143,7 +146,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     <FormLabel className="text-base-semibold text-light-2">Bio</FormLabel>
                     <FormControl>
                         <Textarea {...field} rows={10} className="account-form_input no-focus" />
-                    </FormControl> 
+                    </FormControl>
+                    <FormMessage /> 
                 </FormItem>
             )}
         />
