@@ -21,19 +21,18 @@ interface Props {
 }
 
 const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
-    const router = useRouter();
-        const pathname = usePathname();
-        const form = useForm({ 
-            resolver: zodResolver(CommentValidation),
-            defaultValues: {
-                thread: '',
-            }
-        });
-    
-        const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-            await addCommentToThread(threadId, values.thread, JSON.parse(currentUserId), pathname);
-            form.reset();
+    const pathname = usePathname();
+    const form = useForm({ 
+        resolver: zodResolver(CommentValidation),
+        defaultValues: {
+            thread: '',
         }
+    });
+    
+    const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
+        await addCommentToThread(threadId, values.thread, JSON.parse(currentUserId), pathname);
+        form.reset();
+    }
 
     return (
         <Form {...form}>
@@ -55,3 +54,4 @@ const Comment = ({ threadId, currentUserImg, currentUserId }: Props) => {
 };
 
 export default Comment;
+
