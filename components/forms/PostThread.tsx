@@ -1,35 +1,25 @@
 'use client'
 
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Textarea } from '@components/ui/textarea';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Textarea } from '@/components/ui/textarea';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ThreadValidation } from '@/lib/validations/thread';
 import * as z from 'zod';
-import { useState } from "react";
-import { updateUser } from "@/lib/actions/user.actions";
 import { usePathname, useRouter } from 'next/navigation';
 import { createThread } from "@/lib/actions/thread.actions";
 import { useOrganization } from "@clerk/nextjs";
 
 interface Props {
-    user: {
-        id: string;
-        objectId: string;
-        username: string;
-        name: string;
-        bio: string;
-        image: string;
-    };
-    btnTitle: string;
-}
+    userId: string;
+};
 
-function PostThread({ userId }: {userId: string}) {
+function PostThread({ userId }: Props) {
     const router = useRouter();
     const pathname = usePathname();
     const { organization } = useOrganization();
-    const form = useForm({ 
+    const form = useForm<z.infer<typeof ThreadValidation>>({ 
         resolver: zodResolver(ThreadValidation),
         defaultValues: {
             thread: '',
