@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {sidebarLinks} from '@/constants';
 import { usePathname, useRouter } from 'next/navigation';
-import { SignedIn, SignOutButton, userAuth } from "@clerk/nextjs";
+import { SignedIn, SignOutButton, useAuth } from "@clerk/nextjs";
 
 function LeftSidebar() {
     const router = useRouter();
@@ -27,7 +27,7 @@ function LeftSidebar() {
                 <SignedIn>
                     <SignOutButton signOutCallback={() => router.push('/sign-in')}>
                         <div className="flex cursor-pointer gap-4 p-4">
-                            <Image src='/assets/loguout.svg' alt="logout" width={24} height={24} />
+                            <Image src='/assets/logout.svg' alt="logout" width={24} height={24} />
                             <p className="text-light-2 max-lg:hidden">Logout</p>
                         </div>
                     </SignOutButton>

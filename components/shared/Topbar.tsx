@@ -15,7 +15,7 @@ function Topbar() {
                     <SignedIn>
                         <SignOutButton>
                             <div className="flex cursor-pointer">
-                                <Image src='/assets/loguout.svg' alt="logout" width={24} height={24} />
+                                <Image src='/assets/logout.svg' alt="logout" width={24} height={24} />
                             </div>
                         </SignOutButton>
                     </SignedIn>
